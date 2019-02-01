@@ -93,7 +93,7 @@ OGAirfoilCoords = NewAirfoilData(CoordData, 2:3);
 
 % Start modifying data
 
-TrailingEdgePoint = OGAirfoilCoords(find(OGAirfoilCoords==max(OGAirfoilCoords(:,1))), :);
+TrailingEdgePoint = OGAirfoilCoords(find(OGAirfoilCoords==max(OGAirfoilCoords(:,1))), :); % Finds the trailing edge point
 
 LeftPushCoords = OGAirfoilCoords - TrailingEdgePoint;
 
