@@ -1,15 +1,17 @@
 function [] = CreateDAT(InputFileName, OutputFileName, AngleOfAttack)
 %%
-% Converts and scales coordinate data exported from SolidWorks into a usable .dat file for the hotwire machine
-% 
-% Note: The data is exported from CAD as an IGES file. The .igs extension must be manually changed to .txt
+% CreateDAT(InputFileName, OutputFileName, AngleOfAttack)
+%   Converts and scales coordinate data exported from SolidWorks into a usable .dat file for the hotwire machine
+%   
+%   Takes three (3) input arguments: 
+%       InputFileName - The name of the file to be imported, including the .txt extension
+%       OutputFileName - The name of the .dat file which is to be produced by the program
+%       AngleOfAttack - The angle of attack for the airfoil (in degrees), taken from NACA website
 %
-% Takes three (3) input arguments: 
-%   InputFileName - The name of the file to be imported, including the .txt extension
-%   OutputFileName - The name of the .dat file which is to be produced by the program
-%   AngleOfAttack - The angle of attack for the airfoil (in degrees), taken from NACA website
+%   Note: The data is exported from CAD as an IGES file. The .igs extension must be manually changed to .txt
 %
-% Hi Victor :P
+%   Hi Victor :P
+
 %%
 
 %-----------------------------------
