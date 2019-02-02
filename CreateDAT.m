@@ -10,8 +10,6 @@ function [] = CreateDAT(InputFileName, OutputFileName, AngleOfAttack)
 %
 %   Note: The data is exported from CAD as an IGES file. The .igs extension must be manually changed to .txt
 %
-%   Hi Victor :P
-
 %%
 
 %-----------------------------------
@@ -87,7 +85,7 @@ AirfoilData = cell2mat(raw);
 % Clear temporary variables
 clearvars filename delimiter startRow formatSpec fileID dataArray ans raw col numericData rawData row regexstr result numbers invalidThousandsSeparator thousandsRegExp R;
 
-%% END CRAZY MATLAB STUFF
+%% END FILE IMPORT
 
 %-----------------------------------
 
