@@ -9,7 +9,7 @@ function [] = CreateDAT(InputFileName, OutputFileName, AngleOfAttack)
 %       AngleOfAttack - The angle of attack for the airfoil (in degrees), taken from NACA website
 %
 %   Note: The data is exported from CAD as an IGES file. The .igs extension must be manually changed to .txt
-%
+
 %%
 
 %-----------------------------------
@@ -117,19 +117,17 @@ TiltedCoords = [((cos(OutputAngle)*InvertCoords(:,1))+(sin(OutputAngle)*InvertCo
 InvertCoords2 = [-1*TiltedCoords(:,1), TiltedCoords(:,2)];
 %Finds the minimum point in the data (the Leading Edge point)
 LeadingEdgePoint = InvertCoords2(find(InvertCoords2==min(InvertCoords2(:,1))), :);
-%Translates all of the data so that the Leading Edge point is at x = 0 
-RightPushCoords = [InvertCoords2(:,1) - LeadingEdgePoint(:,1), InvertCoords2(:,2)];
-%Finds the location of the point where x = 0
-UpPushPoint = RightPushCoords((find(RightPushCoords(:,1)==0)),2);
 %Translates all of the data so that the Leading Edge point is at the origin
-UpPushCoords = [RightPushCoords(:,1), (RightPushCoords(:,2) - UpPushPoint)];
+OriginPushCoords = [InvertCoords2(:,1) - LeadingEdgePoint(:,1), InvertCoords2(:,2) - LeadingEdgePoint(:,2)];
 %Scales all of the data so that -1<y<1 and 0<x<1
-ScaledCoords = [(UpPushCoords(:,1)/max(UpPushCoords(:,1))), (UpPushCoords(:,2)/max(UpPushCoords(:,1)))];
+ScaledCoords = [(OriginPushCoords(:,1)/max(OriginPushCoords(:,1))), (OriginPushCoords(:,2)/max(OriginPushCoords(:,1)))];
 
-%%%%% Special Note:
-% I may be wrong about this, but I dont think we need two statements to move the leading edge to the origin.
-% I could be wrong, but I think that is what those last few statements are doing.
-%%%%% End Note
+%% PLOT DATA TO VERIFY SHAPE
+figure(1)
+plot(ScaledCoords(:,1),ScaledCoords(:,2),'k.')
+axis([0, 1, -.5, .5])
+title(OutputFileName)
+grid on
 
 %% EXPORT TO .DAT FILE
 
